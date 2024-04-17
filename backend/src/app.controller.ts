@@ -1,6 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiSecurity } from '@nestjs/swagger';
 
+
+@ApiSecurity("apiKey")
 @Controller({
   version:"1"
 })

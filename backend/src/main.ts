@@ -3,11 +3,12 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import helmet from 'helmet';
+import { ApiKeyAuthGuard } from './auth/guard/apiKey-auth.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-
+  app.useGlobalGuards(new ApiKeyAuthGuard());
   app.enableCors();
   app.use(helmet());
 
